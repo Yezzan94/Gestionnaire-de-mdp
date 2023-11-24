@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+</head>
+<body>
+    <h1>Register</h1>
+
+    {% for message in messages %}
+        <div class="message">{{ message }}</div>
+    {% endfor %}
+
+    <form method="post" action="{% url 'auth:register' %}">
+        {% csrf_token %}
+
+        <div>
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+        </div>
+
+        <div>
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        </div>
+
+        <div>
+            <label for="id_password">Password:</label>
+            {{ form.password }}
+        </div>
+
+        <div>
+            <label for="id_confirmpassword">Confirm Password:</label>
+            {{ form.confirmpassword }}
+        </div>
+
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</body>
+</html>
